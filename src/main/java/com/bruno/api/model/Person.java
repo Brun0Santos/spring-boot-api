@@ -74,4 +74,8 @@ public class Person {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

@@ -1,4 +1,4 @@
-package com.bruno.api;
+package com.bruno.api.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
