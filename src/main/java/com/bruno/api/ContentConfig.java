@@ -10,10 +10,16 @@ public class ContentConfig implements WebMvcConfigurer {
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configure) {
-        configure.favorParameter(true)
-                .parameterName("mediaType")
+//        configure.favorParameter(true)
+//                .parameterName("mediaType")
+//                .defaultContentType(MediaType.APPLICATION_JSON)
+//                .mediaType("json", MediaType.APPLICATION_JSON)
+//                .mediaType("xml", MediaType.APPLICATION_XML);
+
+        configure.favorParameter(false)
                 .defaultContentType(MediaType.APPLICATION_JSON)
                 .mediaType("json", MediaType.APPLICATION_JSON)
                 .mediaType("xml", MediaType.APPLICATION_XML);
+
     }
 }
