@@ -15,3 +15,8 @@ spring:
     schema: classpath:/schema.sql
 
     continue-on-error: true
+
+spring-doc:
+  pathsToMatch: /api/**/v1/**
+  swagger-ui:
+    use-root-path: true

@@ -16,9 +16,9 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Rest API Java 18 and Spring")
                         .version("v1")
-                        .description("Som description about your API")
-                        .termsOfService("")
-                        .license(new License().name("Apache 2.0").url(""))
+                        .description("Some description about your API")
+                        .termsOfService("test@teste")
+                        .license(new License().name("Apache 2.0").url("est@teste"))
                 );
     }
 }

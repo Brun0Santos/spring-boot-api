@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@RequestMapping("/greeting")
+@RequestMapping("/api/greeting")
 public class GreetingController {
 
     private static final String TEMPLATE = "Hello, %s!";
