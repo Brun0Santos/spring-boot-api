@@ -1,6 +1,7 @@
 package com.bruno.api.handler;
 
 import com.bruno.api.exceptions.ExceptionResponse;
+import com.bruno.api.exceptions.InvalidJwtAuthException;
 import com.bruno.api.exceptions.NotFoundResponseException;
 import com.bruno.api.exceptions.UnsupportedMathException;
 import org.springframework.http.HttpStatus;
@@ -38,5 +39,13 @@ public class CustomizeResponseEntityExceptionHandler extends ResponseEntityExcep
         ExceptionResponse exceptionResponse = new ExceptionResponse(
                 new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidJwtAuthException.class)
+    public final ResponseEntity<ExceptionResponse> invalidJwtAuthException(InvalidJwtAuthException ex,
+                                                                            WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.FORBIDDEN);
     }
 }
