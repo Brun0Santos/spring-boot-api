@@ -1,3 +1,6 @@
+cors:
+  originPatterns: http://localhost:8080
+
 spring:
   jpa:
     properties:

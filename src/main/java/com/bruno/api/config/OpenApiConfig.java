@@ -14,11 +14,11 @@ public class OpenApiConfig {
     public OpenAPI customerOpenApi() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Rest API Java 18 and Spring")
+                        .title("Rest API Java and Spring")
                         .version("v1")
                         .description("Some description about your API")
-                        .termsOfService("test@teste")
-                        .license(new License().name("Apache 2.0").url("est@teste"))
+                        .termsOfService("bruno@teste.com")
+                        .license(new License().name("Apache 2.0").url("bruno@teste.com"))
                 );
     }
 }

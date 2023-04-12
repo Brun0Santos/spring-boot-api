@@ -49,6 +49,7 @@ public class PersonController {
                 mapper.map(people, PersonDto.class)).collect(Collectors.toList());
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/{id}")
     @Operation(summary = "Finds all people from ID", description = "Find specific people from database",
             tags = {"People"},

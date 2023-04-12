@@ -1,0 +1,4 @@
+﻿CREATE TABLE permission (
+  id SERIAL PRIMARY KEY,
+  description VARCHAR(20) DEFAULT NULL
+);
