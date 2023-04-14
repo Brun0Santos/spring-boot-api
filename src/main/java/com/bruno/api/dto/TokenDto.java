@@ -3,7 +3,7 @@ package com.bruno.api.dto;
 import java.util.Date;
 
 public class TokenDto {
-    private String userName;
+    private String username;
     private Boolean authenticated;
     private Date created;
     private Date expiration;
@@ -13,9 +13,9 @@ public class TokenDto {
     public TokenDto() {
     }
 
-    public TokenDto(String userName, Boolean authenticated, Date created,
+    public TokenDto(String username, Boolean authenticated, Date created,
                     Date expiration, String accessToken, String refreshToken) {
-        this.userName = userName;
+        this.username = username;
         this.authenticated = authenticated;
         this.created = created;
         this.expiration = expiration;
@@ -23,12 +23,12 @@ public class TokenDto {
         this.refreshToken = refreshToken;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Boolean getAuthenticated() {

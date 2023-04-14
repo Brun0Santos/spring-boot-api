@@ -61,8 +61,10 @@ public class PersonController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public PersonDto findById(@PathVariable("id") String id) {
-        return mapper.map(services.findById(id), PersonDto.class);
+    public PersonDto findById(@PathVariable String id) {
+        Person byId = services.findById(id);
+        PersonDto map = mapper.map(byId, PersonDto.class);
+        return map;
     }
 
     @PostMapping

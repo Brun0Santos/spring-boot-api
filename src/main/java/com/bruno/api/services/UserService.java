@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 @Service
 public class UserService implements UserDetailsService {
-    private final Logger logger = Logger.getLogger(PersonServices.class.getName());
+    private final Logger logger = Logger.getLogger(UserService.class.getName());
     @Autowired
     UserRepository repository;
 
@@ -24,7 +24,7 @@ public class UserService implements UserDetailsService {
         if (byUSerName != null) {
             return byUSerName;
         } else {
-            throw new UsernameNotFoundException("user not found");
+            throw new UsernameNotFoundException("user " + username + " not found");
         }
     }
 }

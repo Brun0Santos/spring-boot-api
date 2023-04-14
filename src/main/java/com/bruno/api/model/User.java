@@ -43,7 +43,7 @@ public class User implements UserDetails {
 
     }
 
-    private List<String> getRoles() {
+    public List<String> getRoles() {
         List<String> roles = new ArrayList<>();
         permissions.forEach(role -> roles.add(role.getDescription()));
         return roles;
