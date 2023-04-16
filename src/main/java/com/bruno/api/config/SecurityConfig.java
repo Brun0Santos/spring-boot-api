@@ -56,11 +56,11 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(authorizeHttpRequest -> authorizeHttpRequest
                         .requestMatchers(
-                                "/auth/**",
-                                "/auth/refresh",
+                                "/auth/signin",
+                                "/auth/refresh/**",
                                 "/api/docs/**",
                                 "/swagger-ui.html/**").permitAll()
-                        .requestMatchers("/api/person/**").authenticated()
+                        .requestMatchers("/api/v1/**").authenticated()
                         .requestMatchers("/users").denyAll())
                 .cors()
                 .and()

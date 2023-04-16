@@ -6,9 +6,10 @@ import com.bruno.api.model.Person;
 import com.bruno.api.repository.PersonRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 @Service
@@ -26,9 +27,11 @@ public class PersonServices {
                 new NotFoundResponseException("Person not found "));
     }
 
-    public List<Person> getAll() {
+    public Page<PersonDto> getAll(Pageable pageable) {
         logger.info("Finding all person!");
-        return repository.findAll();
+        Page<Person> allPerson = repository.findAll(pageable);
+        return allPerson.map(page -> mapper.map(page, PersonDto.class));
+
     }
 
     public PersonDto create(Person person) {

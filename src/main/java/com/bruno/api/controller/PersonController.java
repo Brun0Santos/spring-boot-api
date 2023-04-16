@@ -13,12 +13,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/person/v1")
@@ -44,9 +44,10 @@ public class PersonController {
                     @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             })
-    public List<PersonDto> findAll() {
-        return services.getAll().stream().map(people ->
-                mapper.map(people, PersonDto.class)).collect(Collectors.toList());
+    public ResponseEntity<Page<PersonDto>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                   @RequestParam(value = "limit", defaultValue = "12") Integer limit) {
+        Pageable pageable = PageRequest.of(page, limit);
+        return ResponseEntity.ok().body(services.getAll(pageable));
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
@@ -61,10 +62,8 @@ public class PersonController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public PersonDto findById(@PathVariable String id) {
-        Person byId = services.findById(id);
-        PersonDto map = mapper.map(byId, PersonDto.class);
-        return map;
+    public PersonDto findById(@PathVariable("id") String id) {
+        return mapper.map(services.findById(id), PersonDto.class);
     }
 
     @PostMapping
